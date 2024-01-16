@@ -1,27 +1,21 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import List from "./List";
 
-export function WithCallback() {
-  {
-    /* Initial states */
-  }
+export const WithCallback = () => {
   const [input, setInput] = useState(1);
   const [light, setLight] = useState(true);
 
-  {
-    /* getItems() returns a list of number which
-  is number+10 and number + 100 */
-  }
   const getItems = useCallback(() => {
+    console.log("fire");
     return [input + 10, input + 100];
   }, [input]);
 
-  {
-    /* Style for changing the theme */
-  }
+  // const getItems = () => {
+  //   console.log("fire");
+  //   return [input + 10, input + 100];
+  // };
+
   const theme = {
     backgroundColor: light ? "White" : "grey",
     color: light ? "grey" : "white",
@@ -30,7 +24,6 @@ export function WithCallback() {
   return (
     <>
       <h2>useCallback</h2>
-      {/* set the theme in the parent div */}
       <div style={theme}>
         <input
           type="number"
@@ -52,7 +45,7 @@ export function WithCallback() {
       </div>
     </>
   );
-}
+};
 
 export const WithMemo = () => {
   const [count, setCount] = useState(0);
@@ -68,7 +61,7 @@ export const WithMemo = () => {
   };
 
   //const result = useCallback(() => computeExpensiveValue(count), [count]);
-  // useCallback does not work because result must have a value to show. For that, useMemo is the correct.
+  // useCallback does not work because you want to memorize result, not the function itself.
   //const result = computeExpensiveValue(count);
   const result = useMemo(() => computeExpensiveValue(count), [count]);
 
