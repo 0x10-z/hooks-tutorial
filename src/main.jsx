@@ -5,10 +5,11 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <WithEffect />
+    <hr />
     <WithCallback />
     <hr />
     <WithMemo />
     <hr />
-    <WithEffect />
   </React.StrictMode>
 );
